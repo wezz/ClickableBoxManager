@@ -1,0 +1,23 @@
+[data-clickable-box] {
+    position:relative;
+    a {
+        position:relative;
+        z-index:2;
+    }
+    a[data-clickable-box-link] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        &::after,
+        &::before {
+            content:none;
+            display:none;
+        }
+        span {
+            font-size:0;
+        }
+    }
+}

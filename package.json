@@ -1,0 +1,47 @@
+{
+  "name": "@wezz/clickableboxmanager",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/clickableboxmanager.umd.cjs",
+  "module": "./dist/clickableboxmanager.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/clickableboxmanager.js",
+      "require": "./dist/clickableboxmanager.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "prepare": "npm run build",
+    "pack": "npm run build",
+    "trypublish": "npm publish --access public || true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wezz/ClickableBoxManager"
+  },
+  "author": "Wezz Balk <github@wezz.se> (https://github.com/wezz)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wezz/ClickableBoxManager/issues"
+  },
+  "homepage": "https://github.com/wezz/ClickableBoxManager",
+  "keywords": [
+    "interaction",
+    "html",
+    "ux",
+    "accessibility"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.14.2",
+    "sass": "^1.71.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "vite-plugin-dts": "^2.0.2"
+  }
+}

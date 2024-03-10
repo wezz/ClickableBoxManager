@@ -1,6 +1,6 @@
 {
   "name": "@wezz/clickableboxmanager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./dist/clickableboxmanager.umd.cjs",
   "module": "./dist/clickableboxmanager.js",

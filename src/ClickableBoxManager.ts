@@ -70,19 +70,24 @@
   }
 
   public AddLinkToBlock(elm: HTMLElement, primaryLink: HTMLLinkElement) {
-    const clickableLink = document.createElement("a");
-    const transferAttributes = ["href", "target", "rel"];
-    transferAttributes.forEach((attr) => {
-      if (!primaryLink.hasAttribute(attr)) {
-        return;
-      }
-      clickableLink.setAttribute(attr, primaryLink.getAttribute(attr) ?? "");
+    const clickableElm = document.createElement("div");
+    //const clickableLink = document.createElement("a");
+    // const transferAttributes = ["href", "target", "rel"];
+    // transferAttributes.forEach((attr) => {
+    //   if (!primaryLink.hasAttribute(attr)) {
+    //     return;
+    //   }
+    //   clickableLink.setAttribute(attr, primaryLink.getAttribute(attr) ?? "");
+    // });
+    clickableElm.setAttribute("data-clickable-box-link", "true");
+    clickableElm.setAttribute("aria-hidden", "true");
+    clickableElm.setAttribute("tab-index", "-1");
+    // clickableElm.setAttribute("title", primaryLink.innerText);
+    clickableElm.setAttribute("aria-label", primaryLink.innerText);
+    clickableElm.innerHTML = `<span>${primaryLink.innerText}</span>`;
+    clickableElm.addEventListener("click", () => {
+      primaryLink.click();
     });
-    clickableLink.setAttribute("data-clickable-box-link", "true");
-    clickableLink.setAttribute("role", "presentation");
-    clickableLink.setAttribute("title", primaryLink.innerText);
-    clickableLink.setAttribute("aria-label", primaryLink.innerText);
-    clickableLink.innerHTML = `<span>${primaryLink.innerText}</span>`;
-    elm.appendChild(clickableLink);
+    elm.appendChild(clickableElm);
   }
 }

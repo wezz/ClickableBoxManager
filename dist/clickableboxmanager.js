@@ -1,13 +1,13 @@
 var o = Object.defineProperty;
-var s = (i, e, n) => e in i ? o(i, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : i[e] = n;
-var a = (i, e, n) => (s(i, typeof e != "symbol" ? e + "" : e, n), n);
-class b {
+var s = (l, e, n) => e in l ? o(l, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : l[e] = n;
+var c = (l, e, n) => (s(l, typeof e != "symbol" ? e + "" : e, n), n);
+class u {
   // The parent element is optional, but it can be used to scope-down where we want to initiate the class.
   constructor(e = document) {
     // The local store of elements that have been initiated
-    a(this, "controlelements", []);
+    c(this, "controlelements", []);
     // This is the selector which will be used to find the elements to control
-    a(this, "controlselector", "[data-clickable-box]");
+    c(this, "controlselector", "[data-clickable-box]");
     this.InitiateElements(e), window.addEventListener("global-markupchange", (n) => {
       var t;
       this.InitiateElements(((t = n == null ? void 0 : n.detail) == null ? void 0 : t.target) ?? document);
@@ -16,9 +16,9 @@ class b {
   InitiateElements(e = document) {
     const t = [].slice.call(
       e.querySelectorAll(this.controlselector)
-    ).filter((l) => l.clickablebox !== "activated");
-    t.forEach((l) => {
-      this.InitiateElement(l);
+    ).filter((i) => i.clickablebox !== "activated");
+    t.forEach((i) => {
+      this.InitiateElement(i);
     }), this.controlelements = [].concat(
       this.controlelements,
       t
@@ -38,16 +38,16 @@ class b {
       return null;
     if (t.length === 1)
       return t[0];
-    const l = n.map((r) => t.filter((c) => c.classList.contains(r))).filter((r) => r.length > 0);
-    return l.length > 0 && l[0][0] ? l[0][0] : t[0];
+    const i = n.map((r) => t.filter((a) => a.classList.contains(r))).filter((r) => r.length > 0);
+    return i.length > 0 && i[0][0] ? i[0][0] : t[0];
   }
   AddLinkToBlock(e, n) {
-    const t = document.createElement("a");
-    ["href", "target", "rel"].forEach((r) => {
-      n.hasAttribute(r) && t.setAttribute(r, n.getAttribute(r) ?? "");
-    }), t.setAttribute("data-clickable-box-link", "true"), t.setAttribute("role", "presentation"), t.setAttribute("title", n.innerText), t.setAttribute("aria-label", n.innerText), t.innerHTML = `<span>${n.innerText}</span>`, e.appendChild(t);
+    const t = document.createElement("div");
+    t.setAttribute("data-clickable-box-link", "true"), t.setAttribute("aria-hidden", "true"), t.setAttribute("tab-index", "-1"), t.setAttribute("aria-label", n.innerText), t.innerHTML = `<span>${n.innerText}</span>`, t.addEventListener("click", () => {
+      n.click();
+    }), e.appendChild(t);
   }
 }
 export {
-  b as default
+  u as default
 };
